@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: redis-slave
   labels:
-    foo: bar
+    foo: bar1
     app: redis
     role: slave
     tier: backend
