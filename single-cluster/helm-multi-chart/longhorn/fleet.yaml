@@ -1,0 +1,5 @@
+defaultNamespace: cattle-monitoring-system
+helm:
+  releaseName: longhorn
+  repo: https://charts.rancher.io
+  chart: longhorn
