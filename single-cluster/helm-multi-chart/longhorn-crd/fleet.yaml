@@ -1,5 +1,5 @@
 defaultNamespace: cattle-monitoring-system
 helm:
-  releaseName: longhorn-crd
+  releaseName: rancher-logging-crd
   repo: https://charts.rancher.io
-  chart: longhorn-crd
+  chart: rancher-logging-crd

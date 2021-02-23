@@ -1,5 +1,83 @@
-defaultNamespace: cattle-monitoring-system
+defaultNamespace: thanos
 helm:
-  releaseName: longhorn
-  repo: https://charts.rancher.io
-  chart: longhorn
+  releaseName: thanos
+  repo: https://charts.bitnami.com/bitnami
+  chart: thanos
+  values:
+    bucketweb:
+      enabled: true
+      resources:
+        requests:
+          cpu: 15m
+          memory: 40Mi
+    compactor:
+      enabled: true
+      logLevel: info
+      persistence:
+        accessModes:
+        - ReadWriteOnce
+        enabled: true
+        size: 100Gi
+      resources:
+        requests:
+          cpu: 100m
+          memory: 60Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    objstoreConfig: |-
+      type: GCS
+      config:
+        bucket: thanos-prometheus-metrics
+    query:
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 5
+      dnsDiscovery:
+        enabled: true
+      enabled: true
+      stores:
+        - dns+prometheus.example.com:10901
+        - prometheus-operated.cattle-monitoring-system.svc:10901
+      ingress:
+        certManager: false
+        enabled: true
+        extraTls:
+        - hosts:
+          - thanos.trgdev.com
+          secretName: trgdev.com-tls
+        hostname: thanos.trgdev.com
+      logLevel: info
+      resources:
+        requests:
+          cpu: 50m
+          memory: 100Mi
+    queryFrontend:
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 5
+      resources:
+        requests:
+          cpu: 10m
+          memory: 20Mi
+    ruler:
+      enabled: false
+      logLevel: info
+    storegateway:
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 5
+      enabled: true
+      logLevel: info
+      persistence:
+        size: 50Gi
+      resources:
+        limits:
+          memory: 8Gi
+        requests:
+          cpu: 70m
+          memory: 5Gi
