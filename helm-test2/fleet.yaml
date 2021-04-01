@@ -1,0 +1,5 @@
+defaultNamespace: default
+helm:
+  releaseName: test
+  chart: guestbook
+  repo: http://daishan.do.rancher.space:8080
