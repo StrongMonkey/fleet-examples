@@ -1,0 +1,15 @@
+imageScans:
+- policy:
+    semver: 
+      range: "*"
+  image: "strongmonkey1992/test-scan"
+  name: test-scan
+  secretRef:
+    name: dockerhub-secret
+- policy:
+    semver: 
+      range: "*"
+  image: "strongmonkey1992/test-scan-1"
+  name: test-scan-1
+  secretRef:
+    name: dockerhub-secret

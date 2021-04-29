@@ -18,7 +18,15 @@ spec:
     spec:
       containers:
       - name: slave
-        image: strongmonkey1992/test-scan:v1.0.1 # {"$imagescan": "fleet-default:test"}
+        image: strongmonkey1992/test-scan:v1.0.1 # {"$imagescan": "fleet-local:test-scan"}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 6379
+      - name: slave-1
+        image: strongmonkey1992/test-scan-1:v1.0.1 # {"$imagescan": "fleet-local:test-scan-1"}
         resources:
           requests:
             cpu: 100m

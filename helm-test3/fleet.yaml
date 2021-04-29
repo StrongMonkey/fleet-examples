@@ -1,0 +1,11 @@
+defaultNamespace: default
+helm:
+  releaseName: haproxy
+  repo: https://partner-charts.rancher.io
+  chart: haproxy
+  version: 1.12.100
+targetCustomizations:
+- name: dev
+  clusterSelector:
+    matchLabels:
+      env: dev
