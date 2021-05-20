@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: slave
-        image: strongmonkey1992/test-scan:v1.0.1 # {"$imagescan": "fleet-local:test-scan"}
+        image: index.docker.io/strongmonkey1992/test-scan:v1.0.2 # {"$imagescan": "fleet-local:test-scan"}
         resources:
           requests:
             cpu: 100m
