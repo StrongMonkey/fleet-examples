@@ -1,4 +1,8 @@
-namespace: fleet-mc-helm-example
+namespace: default
+helm:
+  valuesFrom:
+  - secretKeyRef:
+      name: "test"
 targetCustomizations:
 - name: dev
   helm:
