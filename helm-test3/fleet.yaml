@@ -1,11 +1,13 @@
 defaultNamespace: default
 helm:
-  releaseName: haproxy
-  repo: https://partner-charts.rancher.io
-  chart: haproxy
-  version: 1.12.100
+  releaseName: rancher-backup-crd
+  repo: https://charts.rancher.io
+  chart: rancher-backup-crd
+  version: 1.0.400
 targetCustomizations:
 - name: dev
+  helm: 
+    version: 1.0.300
   clusterSelector:
     matchLabels:
       env: dev

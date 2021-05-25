@@ -5,8 +5,7 @@
 namespace: fleet-helm-example
 
 dependsOn:
-- bundleNameSelector:
-    name: test1-depend-test1
+- name: test1-depend-test1
 
 # Custom helm options
 helm:
