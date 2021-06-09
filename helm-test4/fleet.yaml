@@ -1,0 +1,16 @@
+defaultNamespace: default
+helm:
+  releaseName: rancher-backup
+  repo: https://charts.rancher.io
+  chart: rancher-backup
+  version: 1.0.400
+  values:
+    persistence:
+      enabled: true
+targetCustomizations:
+- name: dev
+  helm:
+    version: 1.0.300
+  clusterSelector:
+    matchLabels:
+      env: dev
